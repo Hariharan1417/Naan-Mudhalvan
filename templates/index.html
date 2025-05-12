@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        padding: 20px;
+    }
+
+    .container {
+        background: white;
+        padding: 20px;
+        width: 400px;
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px gray;
+    }
+
+    input[type="number"], input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    .error {
+        color: red;
+        text-align: center;
+        font-weight: bold;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <h1>Disease Prediction Based on Patient Data</h1>
+        <form action="/" method="post">
+            <label>HighChol:</label><input type="number" name="HighChol" required><br>
+            <label>CholCheck:</label><input type="number" name="CholCheck" required><br>
+            <label>BMI:</label><input type="number" name="BMI" step="0.1" required><br>
+            <label>Smoker:</label><input type="number" name="Smoker" required><br>
+            <label>Stroke:</label><input type="number" name="Stroke" required><br>
+            <label>HeartDiseaseorAttack:</label><input type="number" name="HeartDiseaseorAttack" required><br>
+            <label>PhysActivity:</label><input type="number" name="PhysActivity" required><br>
+            <label>Fruits:</label><input type="number" name="Fruits" required><br>
+            <label>Veggies:</label><input type="number" name="Veggies" required><br>
+            <label>HvyAlcoholConsump:</label><input type="number" name="HvyAlcoholConsump" required><br>
+            <label>AnyHealthcare:</label><input type="number" name="AnyHealthcare" required><br>
+            <label>NoDocbcCost:</label><input type="number" name="NoDocbcCost" required><br>
+            <label>GenHlth:</label><input type="number" name="GenHlth" required><br>
+            <label>MentHlth:</label><input type="number" name="MentHlth" required><br>
+            <label>PhysHlth:</label><input type="number" name="PhysHlth" required><br>
+            <label>DiffWalk:</label><input type="number" name="DiffWalk" required><br>
+            <label>Sex:</label><input type="number" name="Sex" required><br>
+            <label>Age:</label><input type="number" name="Age" required><br>
+            <label>Education:</label><input type="number" name="Education" required><br>
+            <label>Income:</label><input type="number" name="Income" required><br>
+            <label>Diabetes_012:</label><input type="number" name="Diabetes_012" required><br>
+            <label>HighBP:</label><input type="number" name="HighBP" required><br>
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction is not none %}
+            <h2>Prediction: {{ prediction }}</h2>
+        {% else %}
+            <p>No prediction available. Please check the input values and try again.</p>
+        {% endif %}
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
